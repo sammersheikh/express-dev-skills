@@ -2,7 +2,9 @@ const DevSkill = require('../models/skill');
 
 module.exports = {
     index,
-    show
+    show,
+    new: newSkill,
+    create
 }
 
 function index(req, res) {
@@ -16,4 +18,14 @@ function show(req, res) {
     res.render('skills/show', {
         devSkill: DevSkill.getOne(req.params.id)
     })
+}
+
+function newSkill(req, res) {
+    res.render('skills/new');
+}
+
+function create(req, res) {
+    console.log(req.body);
+    DevSkill.createOne(req.body)
+    res.redirect('/skills')
 }

@@ -12,7 +12,8 @@ const devSkills = [
 
 module.exports = {
     getAll,
-    getOne
+    getOne,
+    createOne
 }
 
 function getAll() {
@@ -22,4 +23,9 @@ function getAll() {
 function getOne(id) {
     id = parseInt(id);
     return devSkills.find(skill => skill.id === id)
+}
+
+function createOne(skill) {
+    skill.id = Math.floor(Math.random() * 10000)
+    devSkills.push(skill);
 }
