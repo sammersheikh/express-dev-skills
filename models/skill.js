@@ -13,7 +13,8 @@ const devSkills = [
 module.exports = {
     getAll,
     getOne,
-    createOne
+    createOne,
+    deleteOne
 }
 
 function getAll() {
@@ -29,3 +30,11 @@ function createOne(skill) {
     skill.id = Math.floor(Math.random() * 10000)
     devSkills.push(skill);
 }
+
+function deleteOne(id) {
+    // All properties attached to req.params are strings!
+    id = parseInt(id);
+    // Find the index based on the id of the todo object
+    let idx = devSkills.findIndex(skill => skill.id === id);
+    devSkills.splice(idx, 1);
+  }
